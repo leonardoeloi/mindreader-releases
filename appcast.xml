@@ -3,9 +3,29 @@
     <channel>
         <title>Mind Reader</title>
         <item>
+            <title>0.1.8</title>
+            <pubDate>Fri, 12 Jun 2026 16:12:26 +0100</pubDate>
+            <link>https://leonardoeloi.github.io/mind-reader/</link>
+            <sparkle:version>10</sparkle:version>
+            <sparkle:shortVersionString>0.1.8</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <enclosure url="https://github.com/leonardoeloi/mind-reader/releases/download/appcast/MindReader-0.1.8.zip" length="150940876" type="application/octet-stream" sparkle:edSignature="SpsO1K3/sbkHTA77dbERhf+qp2ub/IoNcCQ6kEHayvtsvzzEP8SNaEgaCLJTPS0vmA+T7TCXISRzBKcczqoPBg=="/>
+        </item>
+        <item>
+            <title>#</title>
+            <pubDate>Fri, 12 Jun 2026 16:10:16 +0100</pubDate>
+            <link>https://leonardoeloi.github.io/mind-reader/</link>
+            <sparkle:version>9</sparkle:version>
+            <sparkle:shortVersionString>#</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <enclosure url="https://github.com/leonardoeloi/mind-reader/releases/download/appcast/MindReader-%23.zip" length="150940867" type="application/octet-stream" sparkle:edSignature="x2YfgueXL8Tk6JIPcOzin/g9ieI+bGv0Zbu/suACSo169PVDe0D5Au3p8FFq1Ao4rEIq+/GMSJzs8E6IaQFACw=="/>
+        </item>
+        <item>
             <title>0.1.7</title>
             <pubDate>Fri, 12 Jun 2026 15:42:05 +0100</pubDate>
-            <link>https://github.com/leonardoeloi/mind-reader</link>
+            <link>https://github.com/leonardoeloi/mindreader-releases</link>
             <sparkle:version>8</sparkle:version>
             <sparkle:shortVersionString>0.1.7</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
