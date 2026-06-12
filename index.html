@@ -135,6 +135,12 @@
   .mark .pip.b{animation-delay:.32s}
   .mark .pip.c{animation-delay:.64s}
   @keyframes pip-fade{0%,72%,100%{opacity:1}82%{opacity:.28}}
+  /* large animated brand mark (showcase) — blinking caret + cascading confidence pips */
+  .mark-xl{width:74px;height:74px;border-radius:20px;gap:5px}
+  .mark-xl .caret{width:5px;height:30px;border-radius:3px;animation:caret 1.08s steps(1) infinite}
+  .mark-xl .pip{width:9px;height:9px;animation:pip-cascade 2.6s var(--ease) infinite}
+  .mark-xl .pip.a{animation-delay:0s}.mark-xl .pip.b{animation-delay:.22s}.mark-xl .pip.c{animation-delay:.44s}
+  @keyframes pip-cascade{0%,52%,100%{opacity:1;transform:scale(1)}66%{opacity:.25;transform:scale(.8)}}
 
   /* ============ BUTTONS ============ */
   .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:600;
@@ -330,7 +336,7 @@
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
     .reveal{opacity:1;transform:none;transition:none}
-    .atmos .glow,.mark .pip,.tag .dot,.demo-bar .live .ppulse,.caret{animation:none}
+    .atmos .glow,.mark .pip,.mark-xl .pip,.tag .dot,.demo-bar .live .ppulse,.caret,.mark-xl .caret{animation:none}
     .faq-a,.entry,.btn,.theme-toggle,.demo,.pic-chip{transition:none}
   }
 </style>
@@ -513,7 +519,9 @@
 <!-- FINAL -->
 <section class="final" id="download">
   <div class="wrap">
-    <img src="mindreader-icon.png" srcset="mindreader-icon.png 1x, mindreader-icon@2x.png 2x" alt="Mind Reader app icon" class="reveal" />
+    <span class="mark mark-xl reveal" role="img" aria-label="Mind Reader app icon" style="margin-bottom:26px">
+      <span class="caret"></span><span class="pip a"></span><span class="pip b"></span><span class="pip c"></span>
+    </span>
     <h2 class="reveal">Stop typing the <span class="quiet">predictable part.</span></h2>
     <p class="reveal">Install Mind Reader and let your Mac finish the sentences you were going to write anyway.</p>
     <div class="hero-cta reveal" style="justify-content:center;margin-top:32px">
