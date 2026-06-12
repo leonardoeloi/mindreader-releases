@@ -4,23 +4,13 @@
         <title>Mind Reader</title>
         <item>
             <title>0.1.8</title>
-            <pubDate>Fri, 12 Jun 2026 16:40:58 +0100</pubDate>
-            <link>https://leonardoeloi.github.io/mind-reader/</link>
+            <pubDate>Fri, 12 Jun 2026 16:50:00 +0100</pubDate>
+            <link>https://github.com/leonardoeloi/mind-reader</link>
             <sparkle:version>11</sparkle:version>
             <sparkle:shortVersionString>0.1.8</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <enclosure url="https://github.com/leonardoeloi/mind-reader/releases/download/appcast/MindReader-0.1.8.zip" length="150940819" type="application/octet-stream" sparkle:edSignature="d3r56GcSb+Gk79tPnyooZyyPB3Ynexu+/TaUS6b0fsgSM+615TUHQgEWamC7XZ3Il6Hk5kJ/vv4vkL3R+/k+Cg=="/>
-        </item>
-        <item>
-            <title>0.1.8</title>
-            <pubDate>Fri, 12 Jun 2026 16:12:26 +0100</pubDate>
-            <link>https://github.com/leonardoeloi/mind-reader</link>
-            <sparkle:version>10</sparkle:version>
-            <sparkle:shortVersionString>0.1.8</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <enclosure url="https://github.com/leonardoeloi/mind-reader/releases/download/appcast/MindReader-0.1.8.zip" length="150940876" type="application/octet-stream" sparkle:edSignature="SpsO1K3/sbkHTA77dbERhf+qp2ub/IoNcCQ6kEHayvtsvzzEP8SNaEgaCLJTPS0vmA+T7TCXISRzBKcczqoPBg=="/>
         </item>
     </channel>
 </rss>
