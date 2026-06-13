@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Mind Reader — local autocomplete for every Mac app</title>
-<meta name="description" content="Mind Reader writes the predictable part for you. Inline, on-device autocomplete for every text field on macOS — private, free, native Swift." />
+<title>Mind Reader: local autocomplete for every Mac app</title>
+<meta name="description" content="Mind Reader writes the predictable part for you. Inline, on-device autocomplete for every text field on macOS. Private, free, native Swift." />
 
-<meta property="og:title" content="Mind Reader — it finishes the sentence you were going to type" />
+<meta property="og:title" content="Mind Reader: it finishes the sentence you were going to type" />
 <meta property="og:description" content="Inline, on-device autocomplete for every text field on macOS. Private by design. Free." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://leonardoeloi.github.io/mind-reader/" />
@@ -14,7 +14,7 @@
 <meta property="og:image:width" content="1024" />
 <meta property="og:image:height" content="1024" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Mind Reader — it finishes the sentence you were going to type" />
+<meta name="twitter:title" content="Mind Reader: it finishes the sentence you were going to type" />
 <meta name="twitter:description" content="Inline, on-device autocomplete for every text field on macOS. Private by design. Free." />
 <meta name="twitter:image" content="https://leonardoeloi.github.io/mind-reader/mindreader-icon@2x.png" />
 
@@ -125,13 +125,13 @@
   /* ============ LOGO MARK (rebuilt from the logo: squircle + caret + 3 confidence pips, alive) ============ */
   /* Canonical mark = the app icon: caret + 3 fading "ghost word" pills (decreasing width + value). */
   .mark{width:30px;height:30px;border-radius:9px;background:var(--mark-bg);
-    display:inline-flex;align-items:center;justify-content:center;gap:1.6px;flex-shrink:0;
+    display:inline-flex;align-items:center;justify-content:center;gap:2.6px;flex-shrink:0;
     box-shadow:0 1px 0 rgba(255,255,255,.06) inset, var(--chip-shadow)}
-  .mark .caret{width:2.2px;height:6.5px;border-radius:1.5px;background:var(--mark-caret)}
-  .mark .pip{height:4px;border-radius:2px;background:var(--mark-caret);animation:pip-fade 3.4s var(--ease) infinite}
-  .mark .pip.a{width:9px;animation-delay:0s}
-  .mark .pip.b{width:6.5px;background:var(--g2);animation-delay:.32s}
-  .mark .pip.c{width:3.7px;background:var(--g3);animation-delay:.64s}
+  .mark .caret{width:2.55px;height:13px;border-radius:2.6px;background:var(--mark-caret);flex-shrink:0}
+  .mark .pip{width:4px;height:4px;border-radius:100px;background:var(--mark-caret);flex-shrink:0;animation:pip-fade 3.4s var(--ease) infinite}
+  .mark .pip.a{animation-delay:0s}
+  .mark .pip.b{background:var(--g2);animation-delay:.32s}
+  .mark .pip.c{background:var(--g3);animation-delay:.64s}
   @keyframes pip-fade{0%,72%,100%{opacity:1}82%{opacity:.28}}
   /* large animated brand mark (showcase) — blinking caret + cascading fading pills */
   .mark-xl{width:74px;height:74px;border-radius:20px;gap:4px}
@@ -219,9 +219,12 @@
   .caret{display:inline-block;width:2px;height:1.05em;background:var(--fg);vertical-align:-.16em;margin:0 1px;animation:caret 1.08s steps(1) infinite}
   @keyframes caret{0%,100%{opacity:1}50%{opacity:0}}
   .demo-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:auto;padding-top:16px;border-top:1px solid var(--line)}
-  .key-hint{display:inline-flex;align-items:center;gap:9px;opacity:0;transform:translateY(3px);
+  .key-hint{display:inline-flex;align-items:center;gap:16px;flex-wrap:wrap;opacity:0;transform:translateY(3px);
     transition:opacity .3s,transform .3s;font-size:.76rem;color:var(--muted);font-family:var(--mono)}
+  .key-hint .kh{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
   .key-hint.show{opacity:1;transform:none}
+  .key-hint kbd{transition:background .14s var(--ease),color .14s var(--ease),border-color .14s var(--ease)}
+  .key-hint kbd.press{background:var(--fg);color:var(--bg);border-color:var(--fg)}
   .demo-ramp{display:flex;align-items:center;gap:0}
   .demo-ramp i{display:block;width:22px;height:7px}
   .demo-ramp i:first-child{border-radius:3px 0 0 3px}.demo-ramp i:last-child{border-radius:0 3px 3px 0}
@@ -252,16 +255,98 @@
   .voice-ramp{display:flex;gap:3px;margin-top:16px;max-width:220px}
   .voice-ramp i{height:7px;flex:1;border-radius:2px}
 
-  /* FEATURE INDEX — numbered editorial list */
-  .index{border-top:1px solid var(--line-2)}
-  .entry{display:grid;grid-template-columns:54px 1fr;gap:22px;padding:26px 0;border-bottom:1px solid var(--line);
-    align-items:start;transition:padding-left .35s var(--ease),background .35s}
-  .entry:hover{padding-left:12px;background:linear-gradient(90deg,var(--hover-tint),transparent 42%)}
-  .entry .en-no{font-family:var(--mono);font-size:.82rem;color:var(--faint);padding-top:6px;transition:color .25s}
-  .entry:hover .en-no{color:var(--fg)}
-  .entry h3{font-size:1.3rem;font-weight:700;margin-bottom:5px;letter-spacing:-.02em}
-  .entry p{color:var(--fg-2);max-width:64ch;font-size:1.02rem}
-  .entry p code{color:var(--fg);background:var(--surface);border:1px solid var(--line);padding:1px 6px;border-radius:5px}
+  /* FEATURE INDEX — editorial rows with monochrome figures */
+  .fvA-rows{border-top:1px solid var(--line-2)}
+  .fvA-row{display:grid;grid-template-columns:46px minmax(0,1fr) 300px;gap:clamp(18px,2.4vw,32px);align-items:center;
+    padding:clamp(22px,2.4vw,30px) 0;border-bottom:1px solid var(--line);
+    transition:padding-left .35s var(--ease),background .35s var(--ease)}
+  .fvA-row:hover{padding-left:12px;background:linear-gradient(90deg,var(--hover-tint),transparent 60%)}
+  .fvA-row .no{font-family:var(--mono);font-size:.8rem;color:var(--faint);align-self:start;padding-top:4px;transition:color .25s}
+  .fvA-row:hover .no{color:var(--fg)}
+  .fvA-row h3{font-size:1.28rem;font-weight:700;letter-spacing:-.02em;margin-bottom:6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .fvA-row p{color:var(--fg-2);font-size:1rem;max-width:46ch}
+  .fvA-row p code{color:var(--fg);background:var(--surface);border:1px solid var(--line);padding:1px 6px;border-radius:5px}
+  .fvA-figwrap{width:300px}
+  .fvA-row .fv-fig{transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+  .fvA-row:hover .fv-fig{transform:translateY(-3px);box-shadow:var(--demo-shadow)}
+  @media(max-width:880px){
+    .fvA-row{grid-template-columns:40px 1fr;row-gap:14px}
+    .fvA-row .fvA-figwrap{grid-column:1/-1;width:100%;max-width:400px}
+  }
+  .fv-fig{position:relative;border:1px solid var(--line-2);border-radius:14px;background:var(--surface);box-shadow:var(--chip-shadow);
+    padding:14px 15px;overflow:hidden;display:flex;flex-direction:column;gap:10px;justify-content:center}
+  .fv-fig--lit{background:linear-gradient(180deg,var(--demo-a),var(--demo-b))}
+  .fv-fig-cap{font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:6px}
+  .fv-fig-cap i{color:var(--g2);font-size:.8rem}
+  .fv-win-bar{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-bottom:9px;border-bottom:1px solid var(--line);margin-bottom:2px}
+  .fv-win-bar .dots{display:flex;gap:5px}
+  .fv-win-bar .dots i{width:8px;height:8px;border-radius:50%;background:var(--g4);border:1px solid var(--line-2)}
+  .fv-win-bar .live{margin-left:auto;display:inline-flex;align-items:center;gap:6px}
+  .fv-win-bar .live .pulse{width:6px;height:6px;border-radius:50%;background:var(--g2);animation:blink 2.4s var(--ease) infinite}
+  .fv-field{font-size:1rem;line-height:1.5;font-weight:500;letter-spacing:-.01em}
+  .fv-overlay-tag{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px dashed var(--line-2);border-radius:6px;padding:3px 8px;white-space:nowrap}
+  .fv-engine{display:flex;flex-direction:column;gap:7px}
+  .fv-engine-row{display:flex;align-items:center;gap:10px;padding:9px 11px;border:1px solid var(--line-2);border-radius:9px;background:var(--bg-2)}
+  .fv-engine-row.sel{border-color:var(--fg);background:var(--raised)}
+  .fv-engine-row>div{min-width:0}
+  .fv-engine-row .ico{width:24px;height:24px;flex:none;display:flex;align-items:center;justify-content:center;border-radius:6px;background:var(--surface);border:1px solid var(--line-2);color:var(--fg);font-size:.95rem}
+  .fv-engine-row .nm{font-weight:600;font-size:.88rem;color:var(--fg);line-height:1.2;white-space:nowrap}
+  .fv-engine-row .sub{font-family:var(--mono);font-size:.58rem;color:var(--muted);letter-spacing:.03em;line-height:1.3;margin-top:2px;white-space:nowrap}
+  .fv-engine-row .check{margin-left:auto;color:var(--fg);font-size:.9rem;opacity:0}
+  .fv-engine-row.sel .check{opacity:1}
+  .fv-keys{display:flex;flex-direction:column;gap:8px}
+  .fv-keyline{display:flex;align-items:center;gap:10px}
+  .fv-keyline .lab{font-size:.88rem;color:var(--fg-2)}
+  .fv-keyline .lab b{color:var(--fg);font-weight:600}
+  .fv-accept-line{font-size:.96rem;font-weight:500;margin-top:3px}
+  .fv-chips{display:flex;flex-wrap:wrap;gap:6px}
+  .fv-chip{font-family:var(--mono);font-size:.7rem;letter-spacing:.01em;padding:4px 9px;border-radius:6px;background:var(--bg-2);border:1px solid var(--line-2);color:var(--fg-2);white-space:nowrap}
+  .fv-capture{display:flex;align-items:center;gap:8px;margin-top:3px;padding:8px 10px;border:1px dashed var(--line-2);border-radius:9px;font-size:.84rem;color:var(--fg-2)}
+  .fv-capture b{color:var(--fg);font-weight:600}
+  .fv-capture .add{margin-left:auto;font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-2);border-radius:5px;padding:2px 6px;white-space:nowrap}
+  .fv-tabs{display:flex;gap:5px}
+  .fv-tab{flex:1;text-align:center;font-family:var(--mono);font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;padding:7px 5px;border-radius:6px;border:1px solid var(--line-2);background:var(--bg-2);color:var(--muted)}
+  .fv-tab.on{background:var(--raised);color:var(--fg);border-color:var(--fg)}
+  .fv-register{margin-top:4px;padding:9px 11px;border-left:2px solid var(--g3)}
+  .fv-register .reg-k{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .fv-register .reg-v{font-size:.88rem;color:var(--fg-2);margin-top:3px}
+  .fv-ctx{display:flex;flex-direction:column;gap:8px}
+  .fv-ctx-row{display:flex;align-items:center;gap:10px}
+  .fv-ctx-row .ico{width:20px;text-align:center;color:var(--g2);font-size:.9rem}
+  .fv-ctx-row .nm{font-size:.88rem;color:var(--fg-2);flex:1}
+  .fv-ctx-row .nm small{display:block;font-family:var(--mono);font-size:.54rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .fv-mini-switch{width:32px;height:18px;border-radius:100px;border:1px solid var(--line-2);background:var(--surface);position:relative;flex:none;display:inline-block}
+  .fv-mini-switch::after{content:"";position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:var(--muted);transition:left .2s var(--ease),background .2s}
+  .fv-mini-switch.on{background:var(--btn-bg);border-color:var(--btn-bg)}
+  .fv-mini-switch.on::after{left:16px;background:var(--btn-fg)}
+  .fv-monitors{display:flex;align-items:flex-end;gap:13px;padding:5px 2px 2px}
+  .fv-mon{position:relative;border:1px solid var(--line-2);border-radius:6px;background:var(--bg-2)}
+  .fv-mon.main{width:120px;height:76px}
+  .fv-mon.side{width:88px;height:56px}
+  .fv-mon .mon-field{position:absolute;left:10px;top:20px;right:12px;height:2px;background:var(--line-2)}
+  .fv-mon .mon-ghost{position:absolute;left:10px;top:28px;width:54%;display:flex;gap:0}
+  .fv-mon .mon-ghost i{height:5px;flex:1}
+  .fv-mon .mon-base{position:absolute;left:0;right:0;bottom:-6px;height:5px;background:var(--line);border-radius:0 0 4px 4px}
+  .fv-mon-cap{font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);align-self:flex-end}
+  .fv-stream{font-size:.98rem;line-height:1.6;font-weight:500}
+  .fv-len{display:flex;flex-direction:column;gap:10px}
+  .fv-len-sample{font-size:.92rem;line-height:1.55}
+  .fv-dash-stats{display:flex;gap:18px;flex-wrap:nowrap;align-items:flex-start}
+  .fv-stat{flex:none}
+  .fv-stat .v{font-family:var(--disp);font-weight:800;letter-spacing:-.02em;font-size:1.35rem;color:var(--fg);line-height:1.05;white-space:nowrap}
+  .fv-stat .k{font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:4px;white-space:nowrap}
+  .fv-bars{display:flex;align-items:flex-end;gap:4px;height:42px;margin-top:2px}
+  .fv-bars i{flex:1;border-radius:2px 2px 0 0}
+  .fv-streak{margin-left:auto;align-self:center;font-family:var(--mono);font-size:.7rem;color:var(--fg-2);display:inline-flex;align-items:center;gap:5px}
+  .fv-fix{display:flex;align-items:center;gap:11px;font-size:1.1rem;font-weight:500}
+  .fv-fix .was{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--g3)}
+  .fv-fix .arrow{color:var(--g3);font-size:.95rem;display:inline-flex}
+  .fv-fix .now{color:var(--fg);font-weight:600}
+  .fv-fix-foot{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .fv-fix-foot .off{font-family:var(--mono);font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .fv-ramp{display:flex;gap:0;max-width:140px}
+  .fv-ramp i{height:6px;flex:1}
+  .fv-ramp i:first-child{border-radius:3px 0 0 3px}.fv-ramp i:last-child{border-radius:0 3px 3px 0}
 
   /* KEYS — keycaps */
   .keys{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-top:1px solid var(--line-2);padding-top:44px}
@@ -282,10 +367,10 @@
   .spec-val{font-size:1.02rem;color:var(--fg);line-height:1.5}
   .spec-val b{font-weight:700}
   .spec-val .pill{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;
-    padding:2px 8px;border-radius:5px;margin-left:9px;vertical-align:2px}
+    padding:2px 8px;border-radius:5px;margin-left:14px;vertical-align:2px}
   .pill-need{background:var(--fg);color:var(--bg);font-weight:500}
   .pill-opt{background:transparent;color:var(--muted);border:1px solid var(--line-2)}
-  .spec-val small{display:block;color:var(--muted);font-size:.9rem;margin-top:3px;line-height:1.5}
+  .spec-val small{display:block;color:var(--muted);font-size:.9rem;margin-top:6px;line-height:1.5;clear:both}
   .spec-note{border:1px solid var(--line-2);border-radius:14px;padding:26px;background:var(--surface);box-shadow:var(--chip-shadow)}
   .spec-note .lbl{font-family:var(--mono);font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
   .spec-note h3{font-size:1.18rem;font-weight:700;margin:12px 0 10px;letter-spacing:-.01em}
@@ -329,6 +414,10 @@
   .foot-meta{margin-top:14px;color:var(--muted);font-size:.9rem;max-width:48ch;line-height:1.6}
   .foot-links{display:flex;flex-direction:column;gap:11px;font-size:.9rem}
   .foot-links a{color:var(--fg-2)}.foot-links a:hover{color:var(--fg)}
+  .foot-by{margin-top:14px;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:.8rem;letter-spacing:.01em;color:var(--muted)}
+  .foot-by i{font-size:.98rem;color:var(--g2)}
+  .foot-by a{color:var(--fg-2);text-decoration:none;border-bottom:1px solid var(--line-2);padding-bottom:1px;transition:color .2s,border-color .2s}
+  .foot-by a:hover{color:var(--fg);border-color:var(--fg)}
 
   /* reveal */
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
@@ -337,7 +426,7 @@
     html{scroll-behavior:auto}
     .reveal{opacity:1;transform:none;transition:none}
     .atmos .glow,.mark .pip,.mark-xl .pip,.tag .dot,.demo-bar .live .ppulse,.caret,.mark-xl .caret{animation:none}
-    .faq-a,.entry,.btn,.theme-toggle,.demo,.pic-chip{transition:none}
+    .faq-a,.entry,.fvA-row,.fv-fig,.btn,.theme-toggle,.demo,.pic-chip{transition:none}
   }
 </style>
 </head>
@@ -356,7 +445,7 @@
       <a class="link" href="#requirements">Requirements</a>
       <a class="link" href="#install">Install</a>
       <a class="link" href="#faq">FAQ</a>
-      <span class="mono nav-folio" aria-hidden="true">v<span id="ver-nav">0.1.16</span> — on-device</span>
+      <span class="mono nav-folio" aria-hidden="true">v<span id="ver-nav">0.1.16</span> · on-device</span>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light theme" title="Toggle theme">
         <i class="ph ph-moon" aria-hidden="true"></i><i class="ph ph-sun" aria-hidden="true"></i>
       </button>
@@ -372,7 +461,7 @@
       <div>
         <span class="tag"><span class="dot"></span> Local autocomplete for macOS · on-device</span>
         <h1>It writes the <span class="quiet">predictable</span> part <span class="gh">so you don't have to.</span></h1>
-        <p class="lede">Mind Reader adds inline, ghost-text autocomplete to <b>every</b> text field on your Mac — Mail, Notes, Slack, your browser. The prediction runs <b>entirely on-device</b>. Type, glance, press Tab. Nothing you write leaves the machine.</p>
+        <p class="lede">Mind Reader adds inline, ghost-text autocomplete to <b>every</b> text field on your Mac: Mail, Notes, Slack, your browser. The prediction runs <b>entirely on-device</b>. Type, glance, press Tab. Nothing you write leaves the machine.</p>
         <div class="hero-cta">
           <a class="btn btn-primary" id="hero-dl" href="#download"><i class="ph ph-apple-logo"></i> Download for Mac</a>
           <span class="req-note">Free · <b>Apple&nbsp;Silicon</b> · macOS&nbsp;14+ · v<span id="ver-hero">0.1.21</span></span>
@@ -381,11 +470,11 @@
 
       <!-- live ghost-text demo -->
       <div class="demo reveal" aria-label="Ghost-text prediction demonstration">
-        <div class="demo-bar"><span class="lights"><i></i><i></i><i></i></span> Mail — new message <span class="live"><span class="ppulse"></span> predicting</span></div>
+        <div class="demo-bar"><span class="lights"><i></i><i></i><i></i></span> Mail · new message <span class="live"><span class="ppulse"></span> predicting</span></div>
         <div class="demo-body">
-          <div class="ms-line"><span id="demo-typed"></span><span id="demo-ghost"></span><span class="caret"></span></div>
+          <div class="ms-line"><span id="demo-typed"></span><span class="caret"></span><span id="demo-ghost"></span></div>
           <div class="demo-foot">
-            <span class="key-hint" id="key-hint"><kbd>Tab</kbd> keep a word · <kbd>esc</kbd> dismiss</span>
+            <span class="key-hint" id="key-hint"><span class="kh"><kbd id="k-tab">Tab</kbd> word</span><span class="kh"><kbd id="k-line">`</kbd> whole line</span><span class="kh"><kbd id="k-esc">esc</kbd> dismiss</span></span>
             <span class="demo-ramp" aria-hidden="true" title="prediction confidence, fading"><i style="background:var(--g0)"></i><i style="background:var(--g1)"></i><i style="background:var(--g2)"></i><i style="background:var(--g3)"></i><i style="background:var(--g4)"></i></span>
           </div>
         </div>
@@ -398,7 +487,7 @@
         <span><i class="ph-thin ph-cpu"></i> Neural engine</span>
         <span><i class="ph-thin ph-text-aa"></i> Every field</span>
       </div>
-      <span class="fig" aria-hidden="true">Fig. 01 — the fade is the confidence</span>
+      <span class="fig" aria-hidden="true">Fig. 01 · the fade is the confidence</span>
     </div>
   </div>
 </header>
@@ -409,13 +498,13 @@
     <div class="head">
       <span class="mono">Principles</span>
       <h2>Three things it refuses to <span class="quiet">compromise on.</span></h2>
-      <p>No telemetry to negotiate, no settings to harden. The privacy is the architecture — and the prediction only gets quieter, never louder.</p>
+      <p>No telemetry to negotiate, no settings to harden. The privacy is the architecture, and the prediction only gets quieter, never louder.</p>
     </div>
     <div class="principles reveal">
       <article class="principle">
         <div class="folio">01 / 03</div>
         <div class="ph-head"><span class="pic-chip"><i class="ph ph-shield-check"></i></span><h3>Private by construction</h3></div>
-        <div class="pbody">Every suggestion is generated on your Mac — by Apple's on-device model or a local one. There's no account, no sync, no server to opt out of, because there is no server. What you type is never transmitted, logged, or used to train anything.<span class="kic"><i class="ph-fill ph-circle"></i> Zero bytes leave the machine</span></div>
+        <div class="pbody">Every suggestion is generated on your Mac, by Apple's on-device model or a local one. There's no account, no sync, no server to opt out of, because there is no server. What you type is never transmitted, logged, or used to train anything.<span class="kic"><i class="ph-fill ph-circle"></i> Zero bytes leave the machine</span></div>
       </article>
       <article class="principle">
         <div class="folio">02 / 03</div>
@@ -437,18 +526,18 @@
     <div class="head">
       <h2>A small utility, built <span class="quiet">deep</span> where it counts</h2>
     </div>
-    <div class="index">
-      <div class="entry reveal"><div class="en-no">01</div><div><h3>Ghost text that never intrudes</h3><p>The suggestion lives in a floating overlay that never touches your field — it can't pollute undo or fight your cursor. Only when you accept does a single character get typed.</p></div></div>
-      <div class="entry reveal"><div class="en-no">02</div><div><h3>On-device inference, your choice of engine</h3><p>Apple's built-in Foundation Models, or a local model served by a bundled <code>ollama</code> on <code>localhost</code> — no install, no account, no server.</p></div></div>
-      <div class="entry reveal"><div class="en-no">03</div><div><h3>Word by word, or the whole line</h3><p>Tab accepts the next word and you can chain it; one key takes the entire suggestion; Esc waves it off. Type straight through it and the ghost just keeps pace.</p></div></div>
-      <div class="entry reveal"><div class="en-no">04</div><div><h3>It learns the words you actually use</h3><p>A personal glossary captures your company terms and acronyms, and Mind Reader quietly notices the names you type often and offers to remember them — spelled and capitalised the way you write them.</p></div></div>
-      <div class="entry reveal"><div class="en-no">05</div><div><h3>Per-app instructions</h3><p>Different guidance for email, chat and notes, layered on top of your global style. Each app gets its own register.</p></div></div>
-      <div class="entry reveal"><div class="en-no">06</div><div><h3>Context-aware, on your terms</h3><p>It reads your clipboard, the text after your cursor, and — only if you allow it — what's on screen via on-device OCR, so the continuation fits the moment.</p></div></div>
-      <div class="entry reveal"><div class="en-no">07</div><div><h3>Pixel-aligned overlay, multi-monitor honest</h3><p>It matches the field's real font size and follows you correctly across displays, including an external monitor as the main one. No flicker, no drift.</p></div></div>
-      <div class="entry reveal"><div class="en-no">08</div><div><h3>Streaming suggestions</h3><p>With a local Ollama model, words appear in the ghost as they're generated, so it feels instant instead of waiting for a whole sentence to land.</p></div></div>
-      <div class="entry reveal"><div class="en-no">09</div><div><h3>You set how much it writes</h3><p>Suggestions come short (a nudge of a few words), medium, or long — most of a sentence. Short when you just want a hint; long when you'd rather it finish the thought.</p></div></div>
-      <div class="entry reveal"><div class="en-no">10</div><div><h3>A quiet record of what it saved you</h3><p>A local dashboard tallies words completed, rough time saved and how often you accept — with a per-day chart and a daily streak. It lives in a SQLite file you can open in Finder or export to CSV. Nothing leaves the Mac.</p></div></div>
-      <div class="entry reveal"><div class="en-no">11</div><div><h3>Inline autocorrect <span class="pill pill-opt">Experimental</span></h3><p>An optional Labs feature quietly fixes a high-confidence typo in the word you just finished. Off by default — switch it on in Preferences. It never runs in terminals or code editors.</p></div></div>
+    <div class="fvA-rows">
+      <div class="fvA-row reveal"><div class="no">01</div><div class="fvA-text"><h3>Ghost text that never intrudes</h3><p>The suggestion lives in a floating overlay that never touches your field, so it can't pollute undo or fight your cursor. Only when you accept does a single character get typed.</p></div><div class="fvA-figwrap"><div class="fv-fig fv-fig--lit"><div class="fv-win-bar"><span class="dots"><i></i><i></i><i></i></span> Mail · new message <span class="live"><span class="pulse"></span> overlay</span></div><div class="fv-field"><span style="color:var(--fg)">After reviewing the PRD, </span><span class="caret"></span><span style="color:var(--ghost)"><span style="opacity:.96">I </span><span style="opacity:.885">have </span><span style="opacity:.81">a </span><span style="opacity:.735">few </span><span style="opacity:.66">questions </span><span style="opacity:.585">about </span><span style="opacity:.51">the </span><span style="opacity:.435">success </span><span style="opacity:.36">metrics.</span></span></div><span class="fv-overlay-tag"><i class="ph ph-stack-simple" aria-hidden="true"></i> floats above · never typed</span></div></div></div>
+      <div class="fvA-row reveal"><div class="no">02</div><div class="fvA-text"><h3>On-device inference, your choice of engine</h3><p>Apple's built-in Foundation Models, or a local model served by a bundled <code>ollama</code> on <code>localhost</code>. No install, no account, no server.</p></div><div class="fvA-figwrap"><div class="fv-fig"><div class="fv-engine"><div class="fv-engine-row sel"><span class="ico"><i class="ph ph-apple-logo" aria-hidden="true"></i></span><div><div class="nm">Foundation Models</div><div class="sub">apple · built-in</div></div><span class="check"><i class="ph ph-check" aria-hidden="true"></i></span></div><div class="fv-engine-row"><span class="ico"><i class="ph ph-cube" aria-hidden="true"></i></span><div><div class="nm">ollama</div><div class="sub">localhost · bundled</div></div><span class="check"></span></div></div><div class="fv-fig-cap"><i class="ph ph-lock-simple" aria-hidden="true"></i> no account · no server</div></div></div></div>
+      <div class="fvA-row reveal"><div class="no">03</div><div class="fvA-text"><h3>Word by word, or the whole line</h3><p>Tab accepts the next word and you can chain it; one key takes the entire suggestion; Esc waves it off. Type straight through it and the ghost just keeps pace.</p></div><div class="fvA-figwrap"><div class="fv-fig"><div class="fv-keys"><div class="fv-keyline"><kbd>Tab</kbd><span class="lab"><b>one word</b>, chainable</span></div><div class="fv-keyline"><kbd>`</kbd><span class="lab"><b>whole line</b> at once</span></div><div class="fv-keyline"><kbd>esc</kbd><span class="lab">dismiss</span></div></div><div class="fv-accept-line"><span style="color:var(--fg);font-weight:500">The launch </span><span style="color:var(--ghost);font-weight:400">is set for Thursday.</span></div></div></div></div>
+      <div class="fvA-row reveal"><div class="no">04</div><div class="fvA-text"><h3>It learns the words you actually use</h3><p>A personal glossary captures your company terms and acronyms, and Mind Reader quietly notices the names you type often and offers to remember them, spelled and capitalised the way you write them.</p></div><div class="fvA-figwrap"><div class="fv-fig"><div class="fv-chips"><span class="fv-chip">OKRs</span><span class="fv-chip">MoSCoW</span><span class="fv-chip">RAG</span><span class="fv-chip">Priya</span></div><div class="fv-capture"><i class="ph ph-sparkle" aria-hidden="true" style="color:var(--g2)"></i><span>Remember <b>"Reibert"</b>?</span><span class="add">+ glossary</span></div></div></div></div>
+      <div class="fvA-row reveal"><div class="no">05</div><div class="fvA-text"><h3>Per-app instructions</h3><p>Different guidance for email, chat and notes, layered on top of your global style. Each app gets its own register.</p></div><div class="fvA-figwrap"><div class="fv-fig"><div class="fv-tabs"><span class="fv-tab">Mail</span><span class="fv-tab on">Slack</span><span class="fv-tab">Notes</span></div><div class="fv-register"><div class="reg-k">Slack · tone</div><div class="reg-v">Short, lowercase, fast.</div></div></div></div></div>
+      <div class="fvA-row reveal"><div class="no">06</div><div class="fvA-text"><h3>Context-aware, on your terms</h3><p>It reads your clipboard, the text after your cursor, and, only if you allow it, what's on screen via on-device OCR, so the continuation fits the moment.</p></div><div class="fvA-figwrap"><div class="fv-fig"><div class="fv-ctx"><div class="fv-ctx-row"><span class="ico"><i class="ph ph-clipboard" aria-hidden="true"></i></span><span class="nm">Clipboard<small>what you copied</small></span><span class="fv-mini-switch on" aria-hidden="true"></span></div><div class="fv-ctx-row"><span class="ico"><i class="ph ph-text-align-left" aria-hidden="true"></i></span><span class="nm">After cursor<small>the rest of the field</small></span><span class="fv-mini-switch on" aria-hidden="true"></span></div><div class="fv-ctx-row"><span class="ico"><i class="ph ph-scan" aria-hidden="true"></i></span><span class="nm">Screen OCR<small>only if you allow it</small></span><span class="fv-mini-switch" aria-hidden="true"></span></div></div></div></div></div>
+      <div class="fvA-row reveal"><div class="no">07</div><div class="fvA-text"><h3>Pixel-aligned overlay, multi-monitor honest</h3><p>It matches the field's real font size and follows you correctly across displays, including an external monitor as the main one. No flicker, no drift.</p></div><div class="fvA-figwrap"><div class="fv-fig"><div class="fv-monitors"><div class="fv-mon main"><span class="mon-field"></span><span class="mon-ghost"><i style="background:var(--g0)"></i><i style="background:var(--g1)"></i><i style="background:var(--g2)"></i><i style="background:var(--g3)"></i><i style="background:var(--g4)"></i></span><span class="mon-base"></span></div><div class="fv-mon side"><span class="mon-field"></span><span class="mon-base"></span></div><span class="fv-mon-cap">main ⇄ external</span></div><div class="fv-fig-cap"><i class="ph ph-text-aa" aria-hidden="true"></i> matches the field's real size</div></div></div></div>
+      <div class="fvA-row reveal"><div class="no">08</div><div class="fvA-text"><h3>Streaming suggestions</h3><p>With a local Ollama model, words appear in the ghost as they're generated, so it feels instant instead of waiting for a whole sentence to land.</p></div><div class="fvA-figwrap"><div class="fv-fig fv-fig--lit"><div class="fv-win-bar"><span class="dots"><i></i><i></i><i></i></span> ollama <span class="live"><span class="pulse"></span> streaming</span></div><div class="fv-stream"><span style="color:var(--fg);font-weight:500">Can you review the acceptance criteria </span><span style="color:var(--ghost);font-weight:400">before we finalize the sprint scope?</span><span class="caret"></span></div><div class="fv-ramp"><i style="background:var(--g0)"></i><i style="background:var(--g1)"></i><i style="background:var(--g2)"></i><i style="background:var(--g3)"></i><i style="background:var(--g4)"></i></div></div></div></div>
+      <div class="fvA-row reveal"><div class="no">09</div><div class="fvA-text"><h3>You set how much it writes</h3><p>Suggestions come short (a nudge of a few words), medium, or long, taking on most of a sentence. Short when you just want a hint; long when you'd rather it finish the thought.</p></div><div class="fvA-figwrap"><div class="fv-fig"><div class="fv-len"><div class="fv-tabs"><span class="fv-tab">Short</span><span class="fv-tab on">Medium</span><span class="fv-tab">Long</span></div><div class="fv-len-sample"><span style="color:var(--fg);font-weight:500">Following up on the spec review, </span><span style="color:var(--ghost)">a few notes from the team to share</span></div></div></div></div></div>
+      <div class="fvA-row reveal"><div class="no">10</div><div class="fvA-text"><h3>A quiet record of what it saved you</h3><p>A local dashboard tallies words completed, rough time saved and how often you accept, with a per-day chart and a daily streak. It lives in a SQLite file you can open in Finder or export to CSV. Nothing leaves the Mac.</p></div><div class="fvA-figwrap"><div class="fv-fig"><div class="fv-dash-stats"><div class="fv-stat"><div class="v">1,284</div><div class="k">words completed</div></div><div class="fv-stat"><div class="v">≈ 22m</div><div class="k">time saved</div></div><span class="fv-streak" title="daily streak">🔥 6</span></div><div class="fv-bars" aria-hidden="true"><i style="height:40%;background:var(--g3)"></i><i style="height:62%;background:var(--g3)"></i><i style="height:35%;background:var(--g3)"></i><i style="height:78%;background:var(--g3)"></i><i style="height:55%;background:var(--g3)"></i><i style="height:90%;background:var(--g1)"></i><i style="height:68%;background:var(--g3)"></i></div><div class="fv-fig-cap"><i class="ph ph-database" aria-hidden="true"></i> local SQLite · export CSV</div></div></div></div>
+      <div class="fvA-row reveal"><div class="no">11</div><div class="fvA-text"><h3>Inline autocorrect <span class="pill pill-opt">Experimental</span></h3><p>An optional Labs feature quietly fixes a high-confidence typo in the word you just finished. Off by default; switch it on in Preferences. It never runs in terminals or code editors.</p></div><div class="fvA-figwrap"><div class="fv-fig"><div class="fv-fix"><span class="was">teh</span><span class="arrow"><i class="ph ph-arrow-right" aria-hidden="true"></i></span><span class="now">the</span></div><div class="fv-fix-foot"><span class="off">off by default · labs</span><span class="fv-mini-switch" aria-hidden="true"></span></div></div></div></div>
     </div>
   </div>
 </section>
@@ -472,18 +561,18 @@
     <div class="head"><span class="mono">Minimum requirements</span><h2>What it needs to run</h2><p>A short, honest spec. If your Mac clears these, you're good.</p></div>
     <div class="spec-grid">
       <div class="spec-table reveal">
-        <div class="spec-row"><div class="spec-key">Mac</div><div class="spec-val"><b>Apple Silicon</b> — M1 or newer<span class="pill pill-need">Required</span><small>The app ships as native arm64. Intel Macs are not supported.</small></div></div>
+        <div class="spec-row"><div class="spec-key">Mac</div><div class="spec-val"><b>Apple Silicon</b> (M1 or newer)<span class="pill pill-need">Required</span><small>The app ships as native arm64. Intel Macs are not supported.</small></div></div>
         <div class="spec-row"><div class="spec-key">macOS</div><div class="spec-val"><b>macOS 14 (Sonoma) or later</b><span class="pill pill-need">Required</span><small>On newer systems with Apple Intelligence, it uses the built-in Apple model with no download. On macOS 14–15 it uses a local Ollama model instead.</small></div></div>
         <div class="spec-row"><div class="spec-key">Memory</div><div class="spec-val"><b>8 GB RAM</b> minimum, 16 GB comfortable<span class="pill pill-need">Required</span><small>The language model loads into memory. More RAM lets you run a larger, sharper model.</small></div></div>
-        <div class="spec-row"><div class="spec-key">Disk</div><div class="spec-val"><b>~150 MB</b> app + the model<span class="pill pill-need">Required</span><small>The first model download is roughly 1–5 GB depending on which one you pick — once, then cached.</small></div></div>
-        <div class="spec-row"><div class="spec-key">Permissions</div><div class="spec-val"><b>Accessibility</b> &amp; <b>Input Monitoring</b><span class="pill pill-need">Required</span><small>Granted once in System Settings — to read the focused field and to catch Tab / Esc.</small></div></div>
+        <div class="spec-row"><div class="spec-key">Disk</div><div class="spec-val"><b>~150 MB</b> app + the model<span class="pill pill-need">Required</span><small>The first model download is roughly 1–5 GB depending on which one you pick. Downloaded once, then cached.</small></div></div>
+        <div class="spec-row"><div class="spec-key">Permissions</div><div class="spec-val"><b>Accessibility</b> &amp; <b>Input Monitoring</b><span class="pill pill-need">Required</span><small>Granted once in System Settings, to read the focused field and to catch Tab / Esc.</small></div></div>
         <div class="spec-row"><div class="spec-key">Screen Recording</div><div class="spec-val"><b>Screen context</b> via on-device OCR<span class="pill pill-opt">Optional</span><small>Only if you want suggestions aware of what's on screen. Off by default; processed locally, never uploaded.</small></div></div>
-        <div class="spec-row"><div class="spec-key">Price</div><div class="spec-val"><b>Free</b> — no account, no plan, no limits</div></div>
+        <div class="spec-row"><div class="spec-key">Price</div><div class="spec-val"><b>Free</b>. No account, no plan, no limits</div></div>
       </div>
       <div class="spec-note reveal">
         <span class="lbl">First launch</span>
         <h3>Opening a self-signed app</h3>
-        <p>Mind Reader is signed by its author, not the App&nbsp;Store — the Accessibility and key-tap APIs it needs can't run in the sandbox. The first time you open it, macOS shows a <i>"could not verify"</i> notice.</p>
+        <p>Mind Reader is signed by its author, not the App&nbsp;Store. The Accessibility and key-tap APIs it needs can't run in the sandbox. The first time you open it, macOS shows a <i>"could not verify"</i> notice.</p>
         <p style="margin-top:10px">Click <b>Done</b> (not "Move to Trash"), then open <b>System Settings → Privacy &amp; Security</b>, scroll down, and click <b>Open Anyway</b>. Once per Mac. Comfortable in Terminal? Skip it entirely:</p>
         <code class="codeblock">xattr -dr com.apple.quarantine <span class="c">"/Applications/Mind Reader.app"</span></code>
       </div>
@@ -509,13 +598,13 @@
   <div class="wrap" style="max-width:880px">
     <div class="head"><h2>Good questions</h2></div>
     <div class="faq">
-      <div class="faq-item reveal"><button class="faq-q">Is it really private? <span class="pm">+</span></button><div class="faq-a"><p>Yes. Suggestions are generated on your Mac — either by Apple's built-in Foundation Models or a local Ollama model on <code>localhost</code>. Nothing you type is sent to any server. Mind Reader keeps a small local history (in SQLite) that it uses to learn your style — it stays on your Mac and is never uploaded.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-q">Which apps does it work in? <span class="pm">+</span></button><div class="faq-a"><p>Any standard text field — native apps like Notes, Mail and TextEdit through macOS Accessibility, plus Electron and web apps like Slack and Chrome via a keystroke fallback. Code editors (VS&nbsp;Code, Cursor) aren't a focus and are best left disabled — they already have their own completion. You can mute Mind&nbsp;Reader in any single app with one click — <b>"Pause in&nbsp;…"</b> in the menu bar, or the per-app blocklist in Preferences.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-q">Does it work in Google Docs? <span class="pm">+</span></button><div class="faq-a"><p>No — and it's worth being honest about why. Google Docs draws your text onto a <b>canvas</b> and never hands it to macOS as real text, so assistive apps (Mind Reader included) can't read what you're typing. Even Docs' screen-reader mode only emits spoken announcements, not the editable text — so there's nothing to complete. It works everywhere that uses normal text fields: Mail, Notes, Slack, Gmail, Notion, Outlook on the web, and most other apps.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-q">Why does macOS warn me when I first open it? <span class="pm">+</span></button><div class="faq-a"><p>Mind Reader is self-signed rather than distributed through the App Store — the Accessibility and event-tap APIs it relies on can't run in the App Store sandbox. On first open, click <b>Done</b> on the warning, then <b>System Settings → Privacy &amp; Security → Open Anyway</b> (once per Mac) — or clear the quarantine flag in Terminal. Because every update uses the same signing certificate, your permissions survive upgrades.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-q">What does it cost? <span class="pm">+</span></button><div class="faq-a"><p>Nothing. Mind Reader is a free, personal experiment — no accounts, no plans, no usage limits. It's a native-Swift app that runs entirely on your own machine.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-q">Will it mess with my text or undo history? <span class="pm">+</span></button><div class="faq-a"><p>No. The suggestion is drawn in a separate floating overlay and never touches your actual field until you accept it. Ignore a suggestion and it simply fades — your document is untouched.</p></div></div>
-      <div class="faq-item reveal"><button class="faq-q">How do I keep it updated? <span class="pm">+</span></button><div class="faq-a"><p>It updates itself. Mind Reader checks quietly for new versions and shows a gentle "update available" note in the menu bar — one click downloads and installs the signed update, keeping your permissions and settings intact.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q">Is it really private? <span class="pm">+</span></button><div class="faq-a"><p>Yes. Suggestions are generated on your Mac, either by Apple's built-in Foundation Models or a local Ollama model on <code>localhost</code>. Nothing you type is sent to any server. Mind Reader keeps a small local history (in SQLite) that it uses to learn your style — it stays on your Mac and is never uploaded.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q">Which apps does it work in? <span class="pm">+</span></button><div class="faq-a"><p>Any standard text field: native apps like Notes, Mail and TextEdit through macOS Accessibility, plus Electron and web apps like Slack and Chrome via a keystroke fallback. Code editors (VS&nbsp;Code, Cursor) aren't a focus and are best left disabled; they already have their own completion. You can mute Mind&nbsp;Reader in any single app with one click: <b>"Pause in&nbsp;…"</b> in the menu bar, or the per-app blocklist in Preferences.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q">Does it work in Google Docs? <span class="pm">+</span></button><div class="faq-a"><p>No, and it's worth being honest about why. Google Docs draws your text onto a <b>canvas</b> and never hands it to macOS as real text, so assistive apps (Mind Reader included) can't read what you're typing. Even Docs' screen-reader mode only emits spoken announcements, not the editable text, so there's nothing to complete. It works everywhere that uses normal text fields: Mail, Notes, Slack, Gmail, Notion, Outlook on the web, and most other apps.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q">Why does macOS warn me when I first open it? <span class="pm">+</span></button><div class="faq-a"><p>Mind Reader is self-signed rather than distributed through the App Store. The Accessibility and event-tap APIs it relies on can't run in the App Store sandbox. On first open, click <b>Done</b> on the warning, then <b>System Settings → Privacy &amp; Security → Open Anyway</b> (once per Mac), or clear the quarantine flag in Terminal. Because every update uses the same signing certificate, your permissions survive upgrades.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q">What does it cost? <span class="pm">+</span></button><div class="faq-a"><p>Nothing. Mind Reader is a free, personal experiment, with no accounts, no plans, no usage limits. It's a native-Swift app that runs entirely on your own machine.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q">Will it mess with my text or undo history? <span class="pm">+</span></button><div class="faq-a"><p>No. The suggestion is drawn in a separate floating overlay and never touches your actual field until you accept it. Ignore a suggestion and it simply fades; your document is untouched.</p></div></div>
+      <div class="faq-item reveal"><button class="faq-q">How do I keep it updated? <span class="pm">+</span></button><div class="faq-a"><p>It updates itself. Mind Reader checks quietly for new versions and shows a gentle "update available" note in the menu bar; one click downloads and installs the signed update, keeping your permissions and settings intact.</p></div></div>
     </div>
   </div>
 </section>
@@ -540,7 +629,8 @@
   <div class="wrap foot-inner">
     <div>
       <div class="foot-brand"><span class="mark" aria-hidden="true"><span class="caret"></span><span class="pip a"></span><span class="pip b"></span><span class="pip c"></span></span> Mind&nbsp;Reader</div>
-      <p class="foot-meta">A free, personal experiment in local autocomplete for macOS — native Swift, running on-device with Apple Foundation Models or Ollama.</p>
+      <p class="foot-meta">A free, personal experiment in local autocomplete for macOS. Native Swift, running on-device with Apple Foundation Models or Ollama.</p>
+      <p class="foot-by"><i class="ph ph-linkedin-logo" aria-hidden="true"></i> Built by <a href="https://www.linkedin.com/in/leonardoeloi/" target="_blank" rel="noopener">Leonardo Eloi</a></p>
     </div>
     <div class="foot-links">
       <a href="#features">Features</a>
@@ -620,28 +710,72 @@
     });
   });
 
-  /* live ghost-text demo */
+  /* live ghost-text demo — faithful to the app: an inline ghost suggestion that
+     fades toward grey by confidence (the fade IS the confidence), with the caret
+     sitting between your text and the suggestion. Accepted with Tab (next word,
+     chainable) or ` (the whole line at once); dismissed with esc. */
   (function(){
-    var reduce=window.matchMedia("(prefers-reduced-motion:reduce)").matches;
-    var typedEl=document.getElementById("demo-typed"),ghostEl=document.getElementById("demo-ghost"),hint=document.getElementById("key-hint");
+    var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+    var typedEl=document.getElementById("demo-typed"),
+        ghostEl=document.getElementById("demo-ghost"),
+        hint=document.getElementById("key-hint"),
+        kTab=document.getElementById("k-tab"),
+        kLine=document.getElementById("k-line"),
+        kEsc=document.getElementById("k-esc");
     var scenes=[
-      {base:"Thanks for the quick turnaround — ", ghost:"I'll review it this afternoon and send notes."},
-      {base:"Hey team, the deploy is live. ", ghost:"Everything looks green on staging so far."},
-      {base:"Let's circle back on this ", ghost:"after the sync tomorrow morning."},
-      {base:"Really appreciate you flagging that. ", ghost:"I'll get a fix out before end of day."}
+      {base:"Following up on yesterday's roadmap sync. ", ghost:"Can you share your Q3 capacity estimate before Friday's planning session?", act:["tab","tab","tab","line"]},
+      {base:"The acceptance criteria for this story should ", ghost:"cover the empty state, loading errors, and the offline edge case.", act:["line"]},
+      {base:"Quick update on the launch timeline. ", ghost:"We're targeting September 12 and need design sign-off by next Thursday.", act:["tab","tab","esc"]},
+      {base:"I'll add this to the sprint backlog ", ghost:"and flag it for prioritisation in tomorrow's refinement session.", act:["tab","tab","tab","line"]}
     ];
-    if(reduce){typedEl.textContent=scenes[0].base;ghostEl.textContent=scenes[0].ghost;return;}
-    var si=0;function sleep(ms){return new Promise(function(r){setTimeout(r,ms);});}
+    function fade(words){
+      var n=words.length;
+      return words.map(function(w,i){
+        var t=n<=1?0:i/(n-1);
+        var op=(0.96-t*0.6).toFixed(3);
+        return '<span style="opacity:'+op+'">'+w+'</span>';
+      }).join(" ");
+    }
+    if(reduce){typedEl.textContent=scenes[0].base;ghostEl.innerHTML=fade(scenes[0].ghost.split(" "));hint.classList.add("show");return;}
+    function sleep(ms){return new Promise(function(r){setTimeout(r,ms);});}
+    function press(el){return new Promise(function(r){if(!el){r();return;}el.classList.add("press");setTimeout(function(){el.classList.remove("press");r();},170);});}
+    async function accept(s){
+      var words=s.ghost.split(" "),kept=[];
+      for(var a=0;a<s.act.length;a++){
+        var action=s.act[a];
+        if(action==="tab"){
+          await press(kTab);
+          kept.push(words.shift());
+          typedEl.textContent=s.base+kept.join(" ")+(words.length?" ":"");
+          ghostEl.innerHTML=fade(words);
+          await sleep(340);
+        }else if(action==="line"){
+          await press(kLine);
+          typedEl.textContent=s.base+kept.concat(words).join(" ");
+          ghostEl.innerHTML="";words=[];
+          await sleep(160);
+        }else if(action==="esc"){
+          await press(kEsc);
+          ghostEl.innerHTML="";words=[];
+          await sleep(160);
+        }
+      }
+    }
+    var si=0;
     async function run(){
       while(true){
-        var s=scenes[si];typedEl.textContent="";ghostEl.textContent="";hint.classList.remove("show");
-        for(var i=0;i<s.base.length;i++){typedEl.textContent=s.base.slice(0,i+1);await sleep(26+Math.random()*46);}
+        var s=scenes[si];
+        typedEl.textContent="";ghostEl.innerHTML="";hint.classList.remove("show");
+        for(var i=0;i<s.base.length;i++){typedEl.textContent=s.base.slice(0,i+1);await sleep(24+Math.random()*42);}
         await sleep(300);
         var words=s.ghost.split(" ");
-        for(var w=0;w<words.length;w++){ghostEl.textContent=words.slice(0,w+1).join(" ");if(w===0)hint.classList.add("show");await sleep(78);}
-        await sleep(640);
-        for(var k=0;k<words.length;k++){typedEl.textContent=s.base+words.slice(0,k+1).join(" ")+(k<words.length-1?" ":"");ghostEl.textContent=(k<words.length-1?" ":"")+words.slice(k+1).join(" ");await sleep(135);}
-        ghostEl.textContent="";hint.classList.remove("show");await sleep(1800);si=(si+1)%scenes.length;
+        for(var w=0;w<words.length;w++){ghostEl.innerHTML=fade(words.slice(0,w+1));if(w===0)hint.classList.add("show");await sleep(72);}
+        await sleep(620);
+        await accept(s);
+        await sleep(1500);
+        hint.classList.remove("show");
+        await sleep(520);
+        si=(si+1)%scenes.length;
       }
     }
     run();
