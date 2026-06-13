@@ -3,14 +3,14 @@
     <channel>
         <title>Mind Reader</title>
         <item>
-            <title>0.1.26</title>
-            <pubDate>Sat, 13 Jun 2026 19:47:54 +0100</pubDate>
+            <title>0.1.27</title>
+            <pubDate>Sat, 13 Jun 2026 20:20:43 +0100</pubDate>
             <link>https://leonardoeloi.github.io/mind-reader/</link>
-            <sparkle:version>30</sparkle:version>
-            <sparkle:shortVersionString>0.1.26</sparkle:shortVersionString>
+            <sparkle:version>31</sparkle:version>
+            <sparkle:shortVersionString>0.1.27</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <enclosure url="https://github.com/leonardoeloi/mind-reader/releases/download/appcast/MindReader-0.1.26.zip" length="151126794" type="application/octet-stream" sparkle:edSignature="OMhMgLzmxOq8LCArZQzqK92KiqZCDfZGIFqQks1DsPVPKpA8GKYxK0P5Q3p0LmXibB37SNIA+cYB6O25dwMlCg=="/>
+            <enclosure url="https://github.com/leonardoeloi/mind-reader/releases/download/appcast/MindReader-0.1.27.zip" length="151126889" type="application/octet-stream" sparkle:edSignature="4/SqAsNxUnZvgjR8sx7vnGS3DgyxV5FO0uyEU4rVRkcrse0vbW3weUCN0Av4Lm7LWNEV1KKGNIl0nJ3VB18yAQ=="/>
         </item>
     </channel>
 </rss>
